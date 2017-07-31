@@ -11,11 +11,29 @@ class PhotoContainer extends React.Component {
     }
   }
 
+  componentDidMount() {
+    const url = 'https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1';
+    const request = new XMLHttpRequest();
+    request.open('GET', url);
+
+    request.onload = function() {
+      if(request.status === 200) {
+        let jsonString = request.responseText;
+        let photoData = JSON.parse(jsonString);
+        this.setState({allPhotos: photoData.items});
+      }
+    }.bind(this);
+    
+    request.send();
+  }
+
+
+
   render() {
      return (
-      <div className="comment-box">
+      <div>
         <h2>This is PhotoContainer</h2>
-        <PhotoStream/>
+        <PhotoStream allPhotos={this.state.allPhotos}/>
       </div>
     );
   }
