@@ -1,7 +1,7 @@
 {
-  "name": "react_frontend",
+  "name": "Flickr Stream",
   "version": "1.0.0",
-  "description": "",
+  "description": "Technical demonstration for Park-IT",
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

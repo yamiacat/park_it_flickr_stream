@@ -1,4 +1,5 @@
 import React from 'react';
+import DOMPurify from 'dompurify'
 
 class Photo extends React.Component {
 
@@ -10,7 +11,7 @@ class Photo extends React.Component {
 
     let renderTags = "";
     if(this.props.photo.tags) {
-      renderTags = `Tags: ${this.props.photo.tags}`
+      renderTags = `Tags: ${this.props.photo.tags}`;
     }
 
     const fullDescription = this.props.photo.description;
@@ -18,7 +19,7 @@ class Photo extends React.Component {
     const moreTrimmedDescription = trimmedDescription.slice(trimmedDescription.indexOf("<p>"));
     let renderDescription = "";
     if(moreTrimmedDescription.length > 1) {
-      renderDescription = "Description: " + moreTrimmedDescription;
+      renderDescription = `Description: ${moreTrimmedDescription}`;
     }
 
 
@@ -32,7 +33,7 @@ class Photo extends React.Component {
           <p>by</p>
           <a className="author-label" href={authorPage}>{trimmedAuthor}</a>
         </div>
-        <div className="descripton" dangerouslySetInnerHTML={{__html: renderDescription}}>
+        <div className="descripton" dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(renderDescription)}}>
         </div>
         <div className="tags">
           {renderTags}

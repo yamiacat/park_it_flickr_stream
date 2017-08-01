@@ -44,3 +44,8 @@ body {
 .photo-title {
   font-size: 1.2em;
 }
+
+.description {
+  display: inline;
+  margin-bottom: 0;
+}
