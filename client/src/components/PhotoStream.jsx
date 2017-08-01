@@ -17,8 +17,7 @@ class PhotoStream extends React.Component {
     })
 
     return (
-      <div>
-        This is photostream
+      <div id="photo-container">
         {photosToRender}
       </div>
     );
