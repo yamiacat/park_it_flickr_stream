@@ -19,7 +19,7 @@ class Photo extends React.Component {
     const moreTrimmedDescription = trimmedDescription.slice(trimmedDescription.indexOf("<p>"));
     let renderDescription = "";
     if(moreTrimmedDescription.length > 1) {
-      renderDescription = `Description: ${moreTrimmedDescription}`;
+      renderDescription = `<p>Description: </p>${moreTrimmedDescription}`;
     }
 
 
@@ -36,7 +36,7 @@ class Photo extends React.Component {
         <div className="descripton" dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(renderDescription)}}>
         </div>
         <div className="tags">
-          {renderTags}
+          <p>{renderTags}</p>
         </div>
       </div>
     );

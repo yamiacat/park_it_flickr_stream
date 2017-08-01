@@ -37,7 +37,7 @@ class PhotoContainer extends React.Component {
   render() {
      return (
       <div>
-        <h2>Flickr Photo Stream</h2>
+        <h2 id="page-title">Flickr Photo Stream</h2>
         <PhotoStream allPhotos={this.state.allPhotos}/>
       </div>
     );
