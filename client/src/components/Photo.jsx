@@ -9,9 +9,16 @@ class Photo extends React.Component {
     const authorPage = fullLink.slice(0,-13);
 
     let renderTags = "";
-
     if(this.props.photo.tags) {
       renderTags = `Tags: ${this.props.photo.tags}`
+    }
+
+    const fullDescription = this.props.photo.description;
+    const trimmedDescription = fullDescription.substring(fullDescription.indexOf("alt="));
+    const moreTrimmedDescription = trimmedDescription.slice(trimmedDescription.indexOf("<p>"));
+    let renderDescription = "";
+    if(moreTrimmedDescription.length > 1) {
+      renderDescription = "Description: " + moreTrimmedDescription;
     }
 
 
@@ -25,12 +32,20 @@ class Photo extends React.Component {
           <p>by</p>
           <a className="author-label" href={authorPage}>{trimmedAuthor}</a>
         </div>
-        <div className="descripton">
-            {renderTags}
+        <div className="descripton" dangerouslySetInnerHTML={{__html: renderDescription}}>
+        </div>
+        <div className="tags">
+          {renderTags}
         </div>
       </div>
     );
   }
 }
+
+
+
+
+
+
 
 export default Photo;
