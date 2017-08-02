@@ -13,22 +13,24 @@ class PhotoContainer extends React.Component {
 
 
   componentDidMount() {
-    console.log("mounted");
-    const url = 'https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1';
 
+    const jsonFlickrFeed = (data) => {
+      // let cleansedData = data.replace(/'/g, "/'");
+      let photoData = data.items;
+      this.setState({allPhotos: photoData});
+    }
+
+    const url = 'https://api.flickr.com/services/feeds/photos_public.gne?format=json';
     const request = new XMLHttpRequest();
+
     request.open('GET', url);
-
     request.onload = function() {
+
       if(request.status === 200) {
-
-        let jsonString = request.responseText;
-        let cleansedJson = jsonString.replace(/'/g, "/'");
-        let photoData = JSON.parse(cleansedJson);
-        this.setState({allPhotos: photoData.items});
+        let jsonpString = request.responseText;
+        eval(jsonpString);
       }
-    }.bind(this);
-
+    }
     request.send();
   }
 
@@ -42,7 +44,6 @@ class PhotoContainer extends React.Component {
       </div>
     );
   }
-
 }
 
 export default PhotoContainer;

@@ -9768,22 +9768,24 @@ class PhotoContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
   }
 
   componentDidMount() {
-    console.log("mounted");
-    const url = 'https://api.flickr.com/services/feeds/photos_public.gne?format=json&nojsoncallback=1';
 
+    const jsonFlickrFeed = data => {
+      // let cleansedData = data.replace(/'/g, "/'");
+      let photoData = data.items;
+      this.setState({ allPhotos: photoData });
+    };
+
+    const url = 'https://api.flickr.com/services/feeds/photos_public.gne?format=json';
     const request = new XMLHttpRequest();
+
     request.open('GET', url);
-
     request.onload = function () {
+
       if (request.status === 200) {
-
-        let jsonString = request.responseText;
-        let cleansedJson = jsonString.replace(/'/g, "/'");
-        let photoData = JSON.parse(cleansedJson);
-        this.setState({ allPhotos: photoData.items });
+        let jsonpString = request.responseText;
+        eval(jsonpString);
       }
-    }.bind(this);
-
+    };
     request.send();
   }
 
@@ -9799,7 +9801,6 @@ class PhotoContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
       __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_PhotoStream_jsx__["a" /* default */], { allPhotos: this.state.allPhotos })
     );
   }
-
 }
 
 /* harmony default export */ __webpack_exports__["a"] = (PhotoContainer);
