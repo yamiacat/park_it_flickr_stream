@@ -9770,12 +9770,11 @@ class PhotoContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
   componentDidMount() {
 
     const jsonFlickrFeed = data => {
-      // let cleansedData = data.replace(/'/g, "/'");
       let photoData = data.items;
       this.setState({ allPhotos: photoData });
     };
 
-    const url = 'https://api.flickr.com/services/feeds/photos_public.gne?format=json';
+    const url = 'http://localhost:3000/flickrfeed';
     const request = new XMLHttpRequest();
 
     request.open('GET', url);
