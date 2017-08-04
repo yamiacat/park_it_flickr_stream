@@ -9774,7 +9774,7 @@ class PhotoContainer extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Compo
       this.setState({ allPhotos: photoData });
     };
 
-    const url = 'http://localhost:3000/flickrfeed';
+    const url = '/flickrfeed';
     const request = new XMLHttpRequest();
 
     request.open('GET', url);

@@ -19,7 +19,7 @@ class PhotoContainer extends React.Component {
       this.setState({allPhotos: photoData});
     }
 
-    const url = 'http://localhost:3000/flickrfeed';
+    const url = '/flickrfeed';
     const request = new XMLHttpRequest();
 
     request.open('GET', url);
